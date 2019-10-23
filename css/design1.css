@@ -1,0 +1,24 @@
+body{
+	
+	background-image: url(img/bureau.jfif);
+	background-size: cover;
+}
+.main-section{
+	margin-left: 0 auto;
+	margin-top: 50px;
+	padding: 0;
+}
+.modal-content{
+	background-color: #434e5a;
+	opacity: .8;
+	padding: 0 18px;
+	border-radius: 10px;
+}
+.user-img img{
+	height: 120px;
+	width: 120px;
+	margin-bottom: 50px;
+}
+.btn{
+	margin-top: 20px;
+}

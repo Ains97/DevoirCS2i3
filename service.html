@@ -1,0 +1,76 @@
+<?php
+
+$user='root';
+$pwd='';
+$server='localhost';
+$db='tpdev';
+	
+$con=new PDO("mysql:host=$server;dbname=$db;charset=utf8",$user,$pwd);
+
+$categoryList=$con->query("SELECT * FROM categorie");
+$userList=$con->query("SELECT * FROM utilisateur");
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Service publish</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/design1.css">
+	<link rel="stylesheet"  href="https://use.fontawesome.com/releases/v5.0.0/css/solid.css">
+	<script src="js/jquery-3.3.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	
+	<div class="modal-dialog text-center">
+		<h1 class="title">Nos Services</h1>
+		<div class="col-sm-9 main-section">
+			<div class="modal-content">
+				<div class="col-12 user-img">
+					<img src="img/use.png">
+				</div>
+
+				<div class="col-12 form-input">
+					<form method='post' action="Controller/serviceDAO.php">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Nom" name="nom">
+						</div>
+
+						<div class="form-group">
+							<input type="number" class="form-control" placeholder="prix" name="prix">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Description" name="description">
+						</div>
+						<div class="form-group">
+							 <label for="sel1">Utilisateur</label>
+							  <select class="form-control" id="sel1">
+							   <?php
+							   	while($u=$userList-<fetch()){
+							   		echo "<option value='".$u['id']."'>'".$u['nom']."'</option>";
+							   	}
+							   ?>
+							  </select>
+						</div>
+						<div class="form-group">
+							 <label for="sel1">Categorie</label>
+							  <select class="form-control" id="sel1">
+							   <?php
+							   	while($c=$categoryList-<fetch()){
+							   		echo "<option value='".$c['id']."'>'".$u['nom']."'</option>";
+							   	}
+							   ?>
+							  </select>
+						</div>
+						<button type="submit" class="btn btn-success">Enregistrer</button>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
